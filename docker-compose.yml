@@ -1,0 +1,18 @@
+version: "3.9"
+services:
+  webserver:
+    container_name: woo_commerce
+    image: shipbeat/woocommerce
+    environment:
+        WORDPRESS_DB_PASSWORD: woo1q2w3e
+    links:
+        - dbserver:mysql
+    ports:
+        - 8080:80  
+  dbserver:
+    container_name: woo_mariadb
+    image: mariadb
+    environment:
+        MYSQL_ROOT_PASSWORD: woo1q2w3e
+    ports:
+        - 3307:3306
